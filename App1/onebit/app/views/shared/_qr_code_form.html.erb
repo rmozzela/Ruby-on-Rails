@@ -1,0 +1,24 @@
+<%#= form_for :qr_code, :url => {:action => "create"}, remote:true do |f| %>
+<%#= form_for(@qr_code, html: { multipart: true }) do |f| %>
+<%= form_for(@qr_code) do |f| %>
+
+
+      <%= f.label :value, "Coupon Description" %>
+      <%= f.text_field :value %>
+
+      <%= f.label :customer_name, "Customer Name (optional)" %>
+      <%= f.text_field :customer_name %>
+
+      <%= f.label :customer_email, "Customer Email (optional)" %>
+      <%= f.email_field :customer_email %>
+
+      <%= f.label :expiration_date, "Expiration Date (optional)" %>
+      <%= f.date_field :expiration_date %>
+
+      <%= f.label :email_message, "Email Message to Customer (optional)" %>
+      <%= f.date_field :email_message %>
+
+
+      <%= f.submit "Create my QR Code", class: "btn btn-primary" %>
+    <% end %>
+</div>

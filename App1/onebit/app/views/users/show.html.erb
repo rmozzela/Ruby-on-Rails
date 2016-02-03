@@ -1,0 +1,28 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user, size: 50 %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+
+<div class="row">
+      <h8>
+        <%= invoice  %></br></br>
+        <%= @invoice %>
+     </h8>
+</div
+
+      #Display current QR codes, count of QR codes, list all QR codes
+  <div class="col-md-8">
+    <% if @user.qr_codes.any? %>
+      <h3>QR Codes #(<%= @user.qr_codes.count %>)</h3>
+      <ol class="microposts">
+        <%= render @qr_codes %>
+      </ol>
+    <% end %>
+  </div>
+</div>

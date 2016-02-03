@@ -1,0 +1,35 @@
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="micropost_form">
+        <%= render 'shared/qr_code_form' %>
+      </section>
+    </aside>
+     <div class="col-md-8">
+        <%#=@merchant%>
+      <%#= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1>QR Code</h1>
+
+    <h2>
+      This is the main 
+    <%= link_to "QR Code Page", card_path %>
+    </h2>
+
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+   </div>
+<h5>Some of our partners</h5>
+  <%= link_to image_tag("starbucks.png", alt: "giftinc"),
+              'http://localhost:3000/' %>
+  <%= link_to image_tag("petes.png", alt: "giftinc"),
+              'http://localhost:3000/' %>
+  <%= link_to image_tag("four.png", alt: "giftinc"),
+              'http://localhost:3000/' %>
+<% end %>
+

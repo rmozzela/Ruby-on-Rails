@@ -1,0 +1,50 @@
+<li id="qr_code-<%= qr_code.id %>">
+
+ <% @qr_display = "#{qr_code.unique_key}.png" %>
+
+ <%#= @qr_display_str = %Q{"#{@qr_display}"}.to_str %>
+
+  <%#= link_to image_tag("Jcs-4XJtverb_RittRZXkg.png", alt: "giftinc"),
+              #'http://localhost:3000/' %>
+
+  <%#= link_to image_tag(%Q{"#{@qr_display}"}, alt: "giftinc"),
+            #  'http://localhost:3000/' %>
+
+  <%= link_to image_tag(@qr_display, alt: "QrInc"),
+              '#', :class => "qrimage" %>
+
+ <%= "#{qr_code.unique_key}" %>
+
+  <%#= link_to gravatar_for(qr_code.user, size: 50), qr_code.user %>
+  <span class="content">
+
+    <% if current_user?(qr_code.user) %>
+      <% if qr_code.update_flag? %>
+        <%= link_to "de-activate", qr_code, :method => :put, data: { confirm: "Are you sure?" } %>
+       <% else %>
+        <%= link_to "activate", qr_code, :method => :put, data: { confirm: "Are you sure?" } %>
+      <% end %>
+    <% end %>
+
+    <%= qr_code.customer_name %>
+    <%= qr_code.customer_email %>
+    <%= qr_code.value %>
+    <%= qr_code.email_message %>
+    <%= qr_code.unique_key %>
+    <%= qr_code.expiration_date %>
+    <%= qr_code.created_at %>
+    <b>
+    <%= qr_code.update_flag? ? "Currently Active" : "Not Active"  %>
+    </b>
+    <%#= qr_code.qr_code %>
+    <%#= image_tag @display_qr_code.url %>
+    <%#= image_tag qr_code.picture.url if qr_code.picture? %>
+  </span>
+  <span class="timestamp">
+    Added <%= time_ago_in_words(qr_code.created_at) %> ago
+    <% if current_user?(qr_code.user) %>
+      <%= link_to "delete", qr_code, method: :delete,
+                                       data: { confirm: "Are you sure?" } %>
+    <% end %>
+  </span>
+</li>

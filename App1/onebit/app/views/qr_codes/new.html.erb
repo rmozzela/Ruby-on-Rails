@@ -1,0 +1,23 @@
+<% provide(:title, 'Add QR Code for Customer') %>
+<h1>QrCodes</h1>
+<p>Find me in app/views/qr_codes/new.html.erb</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@qrcode) do |f| %>
+      <%= f.label :value, "Gift Value" %>
+      <%= f.text_field :value %>
+
+      <%= f.label :customer_name %>
+      <%= f.text_field :customer_name %>
+
+      <%= f.label :customer_email %>
+      <%= f.email_field :customer_email %>
+
+      <%= f.label :expiration_date, "Expiration Date" %>
+      <%= f.date_field :expiration_date %>
+
+      <%= f.submit "Create my QR Code", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

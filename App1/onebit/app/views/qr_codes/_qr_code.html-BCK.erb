@@ -1,0 +1,23 @@
+<li id="qr_code-<%= qr_code.id %>">
+  <%= link_to gravatar_for(qr_code.user, size: 50), qr_code.user %>
+  <span class="user"><%= link_to qr_code.user.name, qr_code.user %></span>
+  <span class="content">
+    <%= qr_code.customer_name %>
+    <%= qr_code.customer_email %>
+    <%= qr_code.value %>
+    <%= qr_code.unique_key %>
+    <%= qr_code.expiration_date %>
+    <%= qr_code.created_at %>
+    <%= qr_code.update_flag %>
+    <%#= image_tag qr_code.picture.url if qr_code.picture? %>
+  </span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(qr_code.created_at) %> ago.
+    <% if current_user?(qr_code.user) %>
+      <%= link_to "delete", qr_code, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>
+
+
